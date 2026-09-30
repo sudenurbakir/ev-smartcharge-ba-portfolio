@@ -10,25 +10,23 @@ Bu doküman, EV-SmartCharge sisteminde bir uyarı tetiklendiğinde sürücü ile
 
 Aşağıdaki şema, araç sensörlerinden gelen verinin işlenmesinden sürücünün rota başlatmasına kadar geçen süreci görselleştirir.
 
-```mermaid
 flowchart TD
     A([Başla: Araç Seyir Halinde]) --> B[Sensör Verileri Okunur]
-    B --> C{Sıcaklık >= 55°C VEYA<br/>Şarj <= %15 mi?}
+    B --> C{Sıcaklık >= 55°C VEYA Şarj <= %15 mi?}
     
     C -- Hayır --> B
     C -- Evet --> D[Ekranda Sesli ve Görsel Uyarı Göster]
     
     D --> E[Sürücüye Yakındaki İstasyonları Arama Seçeneği Sun]
-    E --> F{Sürücü "İstasyon Bul" Butonuna Bastı mı?}
+    E --> F{Sürücü 'İstasyon Bul' Butonuna Bastı mı?}
     
     F -- Hayır --> G[Uyarı Ekranı Arka Plana Alınır]
     F -- Evet --> H[Konuma Göre 20 km Yarıçaptaki İstasyonlar Listelenir]
     
-    H --> I[Sürücü Bir İstasyon Seçer ve "Rotayı Başlat" der]
+    H --> I[Sürücü Bir İstasyon Seçer ve 'Rotayı Başlat' Der]
     I --> J[Navigasyon Yönlendirmesi Başlatılır]
     J --> K[Batarya Ön Soğutma / Isıtma Mekanizması Çalıştırılır]
     K --> L([Bitiş: Güvenli Şarj Rotalaması Tamamlandı])
-```
 
 ---
 
