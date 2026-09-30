@@ -1,6 +1,6 @@
 # 05_Process_Flowchart: System & User Interaction Workflow
 
-## Overview (Genel Bakış)
+## Overview 
 
 Bu doküman, EV-SmartCharge sisteminde bir uyarı tetiklendiğinde sürücü ile sistem arasındaki etkileşim adımlarını gösteren süreç akış şemasını (Flowchart) içerir.
 
@@ -59,6 +59,3 @@ flowchart TD
     I --> J[Navigasyon Yönlendirmesi Başlatılır]
     J --> K[Batarya Ön Soğutma / Isıtma Mekanizması Çalıştırılır]
     K --> L([Bitiş: Güvenli Şarj Rotalaması Tamamlandı])
-
----
-
