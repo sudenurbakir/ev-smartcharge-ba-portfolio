@@ -5,31 +5,6 @@
 Bu doküman, EV-SmartCharge sisteminde bir uyarı tetiklendiğinde sürücü ile sistem arasındaki etkileşim adımlarını gösteren süreç akış şemasını (Flowchart) içerir.
 
 ---
-
-## Process Flowchart (Süreç Akış Şeması)
-
-Aşağıdaki şema, araç sensörlerinden gelen verinin işlenmesinden sürücünün rota başlatmasına kadar geçen süreci görselleştirir.
-
-flowchart TD
-    A([Başla: Araç Seyir Halinde]) --> B[Sensör Verileri Okunur]
-    B --> C{Sıcaklık 55°C veya Şarj %15 Kritik Sınırda mı?}
-    
-    C -- Hayır --> B
-    C -- Evet --> D[Ekranda Sesli ve Görsel Uyarı Göster]
-    
-    D --> E[Sürücüye Yakındaki İstasyonları Arama Seçeneği Sun]
-    E --> F{Sürücü İstasyon Bul Butonuna Bastı mı?}
-    
-    F -- Hayır --> G[Uyarı Ekranı Arka Plana Alınır]
-    F -- Evet --> H[Konuma Göre 20 km Yarıçaptaki İstasyonlar Listelenir]
-    
-    H --> I[Sürücü Bir İstasyon Seçer ve Rotayı Başlat Der]
-    I --> J[Navigasyon Yönlendirmesi Başlatılır]
-    J --> K[Batarya Ön Soğutma / Isıtma Mekanizması Çalıştırılır]
-    K --> L([Bitiş: Güvenli Şarj Rotalaması Tamamlandı])
-
----
-
 ## Process Steps & Logic (Süreç Adımları ve Mantığı)
 
 ### 1. Veri Toplama
@@ -61,3 +36,29 @@ Sürücü bir istasyon seçip **"Rotayı Başlat"** seçeneğini onayladığınd
 | İstasyon seçimi       | Kullanıcı uygun bir istasyon seçer.                                                 |
 | Rota                  | Navigasyon seçilen istasyona yönlendirilir.                                         |
 | Ön koşullandırma      | Desteklenen araçlarda batarya sıcaklığı şarja uygun seviyeye getirilmeye çalışılır. |
+
+## Process Flowchart (Süreç Akış Şeması)
+
+Aşağıdaki şema, araç sensörlerinden gelen verinin işlenmesinden sürücünün rota başlatmasına kadar geçen süreci görselleştirir.
+
+```mermaid
+flowchart TD
+    A([Başla: Araç Seyir Halinde]) --> B[Sensör Verileri Okunur]
+    B --> C{Sıcaklık 55°C veya Şarj %15 Kritik Sınırda mı?}
+    
+    C -- Hayır --> B
+    C -- Evet --> D[Ekranda Sesli ve Görsel Uyarı Göster]
+    
+    D --> E[Sürücüye Yakındaki İstasyonları Arama Seçeneği Sun]
+    E --> F{Sürücü İstasyon Bul Butonuna Bastı mı?}
+    
+    F -- Hayır --> G[Uyarı Ekranı Arka Plana Alınır]
+    F -- Evet --> H[Konuma Göre 20 km Yarıçaptaki İstasyonlar Listelenir]
+    
+    H --> I[Sürücü Bir İstasyon Seçer ve Rotayı Başlat Der]
+    I --> J[Navigasyon Yönlendirmesi Başlatılır]
+    J --> K[Batarya Ön Soğutma / Isıtma Mekanizması Çalıştırılır]
+    K --> L([Bitiş: Güvenli Şarj Rotalaması Tamamlandı])
+
+---
+
